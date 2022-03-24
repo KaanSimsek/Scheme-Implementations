@@ -4,7 +4,7 @@
       
 (define (highest number N Ni)
     (if (< number Ni)
-        (/ Ni 2)
+        (/ Ni N)
         (highest number N (* N Ni))
         )
 
