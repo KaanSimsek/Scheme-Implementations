@@ -1,0 +1,26 @@
+(define (div number Ni)
+      (/ (- number (modulo number Ni)) Ni)
+      )
+      
+(define (highest number N Ni)
+    (if (< number Ni)
+        (/ Ni 2)
+        (highest number N (* N Ni))
+        )
+
+    )
+(define (bignum-helper number N Ni lst)
+    (if (< Ni 1)
+        lst
+        (if (< number Ni)
+            (bignum-helper number N (/ Ni N) (cons 0 lst))
+            (bignum-helper (- number (* Ni (div number Ni))) N (/ Ni N) (cons (div number Ni) lst))
+        ))
+
+    )
+    
+ (define (bignum number N)
+    (bignum-helper number N (highest number N 1) '())
+    )
+    
+  
